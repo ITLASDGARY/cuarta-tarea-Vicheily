@@ -23,11 +23,22 @@ namespace EjerciciosCS
         public double CalcularPromedioTemperatura()
         {
             // TODO: Implementar el cálculo del promedio de temperaturas
-            double promedio = 0.0; 
+            // Crear array con 5 temperaturas
+            double[] temperaturas = { 23.5, 24.0, 22.8, 25.2, 23.9 };
+            // Sumar todas las temperaturas
+            double suma = 0.0;
             
+            for (int i = 0; i < temperaturas.Length; i++)
+            {
+            suma = suma + temperaturas[i];
+            }
             
-            return promedio;
+            // Calcular el promedio
+           double promedio = suma / temperaturas.Length;
+        
+           return promedio;
         }
+
 
         /// <summary>
         /// 2. LISTA DE SUPERMERCADO (Listas)
@@ -44,11 +55,41 @@ namespace EjerciciosCS
         public List<string> CrearListaCompras()
         {
             // TODO: Implementar la lista de compras interactiva
+            // Crear la lista de compras
             List<string> listaCompras = new List<string>();
+
+            // Mostrar instrucciones al usuario
+            Console.WriteLine("Ingrese productos para su lista de compras.");
+            Console.WriteLine("Escriba 'salir' cuando termine.");
+
+            // Bucle infinito para pedir productos
+            while (true)
+           {
+              Console.Write("Producto: ");
+              string producto = Console.ReadLine();
+        
+              // Si escribe "salir", terminar el bucle
             
+             if (producto == "salir")
+             {
+             break;
+            }
+
+            // Agregar el producto a la lista
+           listaCompras.Add(producto);
+        }
+    
+          // Mostrar todos los productos
+          Console.WriteLine("\nSu lista de compras:");
+        foreach (string producto in listaCompras)
+        {
+           Console.WriteLine("- " + producto);
+        }
 
             return listaCompras;
         }
+
+
 
         /// <summary>
         /// 3. EL BUSCADOR (Reto)
@@ -72,10 +113,34 @@ namespace EjerciciosCS
             bool encontrado = false;
             Random random = new Random();
             
+            // Crear array de 10 números
+            int[] numeros = new int[10];
 
-            return encontrado;
+            // Llenar el array con números aleatorios (0-100)
+            for (int i = 0; i < numeros.Length; i++)
+            {
+             numeros[i] = random.Next(0, 101);
+            }
+
+            // BONUS: Mostrar los números generados
+           Console.WriteLine("Números generados:");
+           for (int i = 0; i < numeros.Length; i++)
+          {
+            Console.WriteLine(numeros[i]);
+          }
+    
+           // Buscar el número en el array
+          for (int i = 0; i < numeros.Length; i++)
+          {
+              if (numeros[i] == numeroBuscado)
+              {
+                 encontrado = true;
+                 break;
+               }
+           }     
+         return encontrado;
+        
         }
-
         
     }
 }
